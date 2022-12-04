@@ -4,6 +4,7 @@ import requests
 import urllib.parse
 import datetime
 from settings import MySettings
+from pandas import read_csv
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -128,7 +129,6 @@ async def get_edt_datas(v_date):
                                         int(date[2]), week, 5
                                     ).strftime("%d/%m/%Y")
                                 )
-                        # print(eDate)
                         line = (line.split("</span>"))[1].split("</table>")[0]
                         line = (
                             line.replace("<br/>", ",")
@@ -153,6 +153,7 @@ async def get_edt_datas(v_date):
                         d.write(final[:-1] + "\n")
                     except:
                         pass
+    read_csv("./data.csv").sort_index(ascending=True)
 
 
 @client.event
@@ -163,12 +164,23 @@ async def on_ready():
 
 @client.command()
 async def edt(ctx, arg=""):
-    print("Getting datas")
-    await get_edt_datas(
-        datetime.date.strftime(arg, "%d/%m/%Y").strftime("%m/%d/%Y")
-        if arg != ""
-        else datetime.date.today().strftime("%m/%d/%Y")
-    )
+
+    print("---\nGetting datas")
+    if "/" in arg:
+        await get_edt_datas(
+            datetime.datetime.strptime(arg, "%d/%m/%Y").strftime("%m/%d/%Y")
+        )
+    elif arg != "":
+        arg = arg.split(",")
+        await get_edt_datas(
+            datetime.date.fromisocalendar(int(arg[1]), int(arg[0]), 1).strftime(
+                "%m/%d/%Y"
+            )
+        )
+        arg = ""
+    else:
+        await get_edt_datas(datetime.date.today().strftime("%m/%d/%Y"))
+
     date = ""
     with open("data.csv", "r") as data:
         print("Data treatment")

@@ -14,7 +14,6 @@ class MySettings:
 
 **Commandes**
 
-- **!edt** :
-  Affiche l'emploi du temps de la semaine en cours
-- **!edt \<jj>/\<mm>/\<aaaa>** :
-  affiche l'emploi du temps du jour indiqué
+- **!edt** : Affiche l'emploi du temps de la semaine en cours
+- **!edt \<jj/mm/aaaa>** : Affiche l'emploi du temps du jour indiqué
+- **!edt \<numéro de semaine>,\<année>** : Affiche l'emploi du temps de la semaine indiquée
