@@ -158,7 +158,7 @@ async def get_edt_datas(v_date):
 
 @client.event
 async def on_ready():
-    print("Bot's ready")
+    print("Bot is ready !")
     print("-+-+-+-+-+-")
 
 
