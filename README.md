@@ -1,4 +1,17 @@
-#discord_bot_edt_ipi
+# discord_bot_edt_ipi
+
+## Installation
+
+1. Ajouter un fichier `settings.py` à la racine du projet.
+2. Ajouter et adapter le code suivant dans `settings.py` :
+
+```
+class MySettings:
+    username = "<username>"
+    password = "<password>"
+    token = "<token>"
+```
+
 **Commandes**
 
 - **!edt** :
