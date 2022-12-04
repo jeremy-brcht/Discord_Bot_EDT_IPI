@@ -12,7 +12,7 @@ class MySettings:
     token = "<token>"
 ```
 
-**Commandes**
+## Commandes
 
 - **!edt** : Affiche l'emploi du temps de la semaine en cours
 - **!edt \<jj/mm/aaaa>** : Affiche l'emploi du temps du jour indiqué
