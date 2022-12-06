@@ -159,9 +159,9 @@ def func():
             url=settings.webhook_url,
             username="EDT",
         )
-        arg = datetime.datetime.now().strftime("%d/%m/%Y")
+        arg = (datetime.date.today() + datetime.timedelta(days=1)).strftime("%d/%m/%Y")
         print("getting datas")
-        get_edt_datas(datetime.datetime.now().strftime("%m/%d/%Y"))
+        get_edt_datas((datetime.date.today() + datetime.timedelta(days=1)).strftime("%m/%d/%Y"))
         date = ""
         with open("data.csv", "r") as data:
             print("Data treatment")
@@ -193,7 +193,7 @@ def func():
 
 
 func()
-schedule.every().day.at("06:00").do(func)
+schedule.every().day.at("18:00").do(func)
 
 while True:
     schedule.run_pending()
