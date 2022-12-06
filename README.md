@@ -10,6 +10,7 @@ class MySettings:
     username = "<username>"
     password = "<password>"
     token = "<token>"
+    webhook_url = "<webhook url>"
 ```
 
 ## Commandes
